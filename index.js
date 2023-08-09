@@ -10,29 +10,7 @@ app.use(express.json());
 Airtable.configure({ apiKey: process.env.AIRTABLE_TOKEN_KEY });
 const base = Airtable.base(process.env.BASE_ID);
 
-// const coinIds = {};
-const coinIds = {
-	tron: "rec7tPxGOjeueCXsZ",
-	litecoin: "recspdjMGOX3Ben8J",
-	"staked-ether": "recOqJZjftaUpnZ7a",
-	cardano: "rec7h1q6omN3yfhPC",
-	"shiba-inu": "rec6fGqCYbhGxFQPX",
-	bitcoin: "rec8OrdJihFHsKrvF",
-	"usd-coin": "recbgyvhiWaYztBwg",
-	dogecoin: "rec7Boapkdn6brT3n",
-	ethereum: "recR07IqTePljRiY1",
-	"avalanche-2": "rec8sBdNgTtJWRvvl",
-	tether: "recIjrbOyE54KYXee",
-	"matic-network": "rec47IJtDrwByW53D",
-	"bitcoin-cash": "rechiQjjMUHnQU0rp",
-	polkadot: "rech1dMuixnD989qZ",
-	solana: "rec7aiqS7GdBLQjob",
-	ripple: "recvQzeJFuBQzah6b",
-	uniswap: "recdbk1G1rjQhqABd",
-	binancecoin: "recUEZcL5KRtcqb1z",
-	"the-open-network": "recbpCaY7N5LmFzyy",
-	"wrapped-bitcoin": "recHJqXowJMdRX3ch",
-};
+const coinIds = {};
 
 const getTop20 = async () => {
 	try {
@@ -97,41 +75,12 @@ const getTop20 = async () => {
 				);
 			}
 		});
-		console.log(coinIds);
 	} catch (err) {
 		console.log(err);
 	}
 };
 
-// getTop20();
-
-// const updateTop20 = async () => {
-// 	const coins = await getTop20();
-// 	// await deleteAll();
-// 	coins.forEach(async (coin) => {
-// 		await base("Coins").create(
-// 			[
-// 				{
-// 					fields: {
-// 						name: coin.name,
-// 						symbol: coin.symbol,
-// 						current_price: coin.current_price,
-// 						market_cap: coin.market_cap,
-// 					},
-// 				},
-// 			],
-// 			function (err, records) {
-// 				if (err) {
-// 					console.error(err);
-// 					return;
-// 				}
-// 				records.forEach(function (record) {
-// 					console.log(record.get("Name"));
-// 				});
-// 			}
-// 		);
-// 	});
-// };
+getTop20();
 
 const getNewPrices = async () => {
 	// This response will be replaced by our airTable databse top 20 records but fetching every 1 minute
